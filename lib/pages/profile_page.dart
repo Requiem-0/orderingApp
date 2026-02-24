@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:insta_food/pages/home_page.dart';
+import 'package:insta_food/pages/sign_in.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -408,7 +409,16 @@ class ProfilePage extends StatelessWidget {
                 children: [
                   Icon(Icons.logout, size: 20, color: Colors.red),
 
-                  Text(
+                  GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SignInPage(),
+                      ),
+                    );
+                  },
+                  child: Text(
                     'Log Out',
                     style: TextStyle(
                       color: Colors.red,
@@ -416,6 +426,7 @@ class ProfilePage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                ),
                 ],
               ),
             ),
