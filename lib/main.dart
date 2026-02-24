@@ -19,9 +19,26 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xFFF8F6F6),
-
         fontFamily: 'Plus Jakarta Sans',
       ),
+      builder: (context, child) {
+        return LayoutBuilder(
+          builder: (context, constraints) {
+            if (constraints.maxWidth > 600) {
+              return Container(
+                color: const Color(0xFFE5E7EB),
+                child: Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 450),
+                    child: child!,
+                  ),
+                ),
+              );
+            }
+            return child!;
+          },
+        );
+      },
       home: const SignInPage(),
     );
   }
